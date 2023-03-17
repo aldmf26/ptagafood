@@ -82,11 +82,11 @@
                         ],
                         'management' => [
                             [
-                                'href' => 'dashboard',
+                                'href' => 'karyawan',
                                 'nama' => 'karyawan',
                             ],
                             [
-                                'href' => 'users.index',
+                                'href' => 'users',
                                 'nama' => 'user',
                             ],
                             [

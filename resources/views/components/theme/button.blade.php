@@ -7,14 +7,22 @@
     'href' => '#',
     'icon' => '',
     'modal' => 'T',
-    'idModal' => ''
+    'idModal' => '',
+    'data' => '',
+    'hapus' => 'T',
 ])
 <a 
+{{$data}}
 href="{{$href}}" 
+@if ($hapus == 'Y')
+    onclick="return confirm('Yakin dihapus')"
+@endif
+
 id="{{$id}}" 
 @if ($modal == 'Y')
-data-bs-toggle="modal" data-bs-target="#{{$idModal}}"
+    data-bs-toggle="modal" data-bs-target="#{{$idModal}}"
 @endif
+
 class="{{$addClass}} btn btn-{{$size}} icon icon-left btn-{{$variant}}">
     <i class="fas {{$icon}}"></i> {{$teks}}
 </a>
