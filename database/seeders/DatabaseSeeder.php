@@ -13,6 +13,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(1)->create();
+        // \App\Models\User::factory(1)->create();
+        \App\Models\User::create(
+            [
+                'name' => 'Aldi',
+                'username' => 'aldi',
+                'password' => bcrypt('Takemor'),
+                'id_posisi' => '1',
+                'id_lokasi' => '1',
+            ],
+        );
+        
+        \App\Models\Posisi::create(['nm_posisi' => 'Presiden',]);
+        \App\Models\Posisi::create(['nm_posisi' => 'Admin',]);
+
     }
 }

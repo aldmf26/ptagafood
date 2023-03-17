@@ -1,8 +1,7 @@
 @props([
 'title' => '',
 ])
-<x-theme.head />
-
+<x-theme.head :title="$title" />
 
 <x-theme.navbar />
 
@@ -23,6 +22,7 @@
 
     </div>
 
+</div>
 </div>
 
 <x-theme.footer />

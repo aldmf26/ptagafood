@@ -1,12 +1,12 @@
 <footer>
     <div class="container">
-        <div class="footer clearfix mb-0 text-muted">
+        <div class="footer clearfix mb-0 text-sm text-muted">
             <div class="float-start">
-                <p>2021 &copy; Mazer</p>
+                <p>2023 &copy; PTAGAFOOD</p>
             </div>
             <div class="float-end">
                 <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                        href="https://saugi.me">Saugi</a></p>
+                        href="https://ptagafood.com">AgrikaGroup</a></p>
             </div>
         </div>
     </div>
@@ -28,64 +28,64 @@
 
 
 <script>
-$('.select2').select2({
-dropdownParent: $('#tambah .modal-content')
-});
+    $('.select2').select2({
+        dropdownParent: $('#tambah .modal-content')
+    });
 
-$('#table').DataTable({
-"paging": false,
-"pageLength": 100,
-"scrollY": "100%",
-"lengthChange": false,
-// "ordering": false,
-"info": false,
-"stateSave": true,
-"autoWidth": true,
-// "order": [ 5, 'DESC' ],
-"searching": true,
-});
+    $('#table').DataTable({
+        "paging": false,
+        "pageLength": 100,
+        "scrollY": "100%",
+        "lengthChange": false,
+        // "ordering": false,
+        "info": false,
+        "stateSave": true,
+        "autoWidth": true,
+        // "order": [ 5, 'DESC' ],
+        "searching": true,
+    });
 
-$('#tableScroll').DataTable({
-"searching": true,
-scrollY: '400px',
-scrollCollapse: true,
-"autoWidth": true,
-"paging": false,
-});
+    $('#tableScroll').DataTable({
+        "searching": true,
+        scrollY: '400px',
+        scrollCollapse: true,
+        "autoWidth": true,
+        "paging": false,
+    });
 </script>
 @if (session()->has('sukses'))
-<script>
-$(document).ready(function() {
-    Toastify({
-        text: "{{ session()->get('sukses') }}",
-        duration: 3000,
-        style: {
-            background: "#EAF7EE",
-            color: "#7F8B8B"
-        },
-        close: true,
-        avatar: "https://cdn-icons-png.flaticon.com/512/190/190411.png"
-    }).showToast();
-});
-</script>
+    <script>
+        $(document).ready(function() {
+            Toastify({
+                text: "{{ session()->get('sukses') }}",
+                duration: 3000,
+                style: {
+                    background: "#EAF7EE",
+                    color: "#7F8B8B"
+                },
+                close: true,
+                avatar: "https://cdn-icons-png.flaticon.com/512/190/190411.png"
+            }).showToast();
+        });
+    </script>
 @endif
 @if (session()->has('error'))
-<script>
-$(document).ready(function() {
-    Toastify({
-        text: "{{ session()->get('error') }}",
-        duration: 3000,
-        style: {
-            background: "#FCEDE9",
-            color: "#7F8B8B"
-        },
-        close: true,
-        avatar: "https://cdn-icons-png.flaticon.com/512/564/564619.png"
-    }).showToast();
+    <script>
+        $(document).ready(function() {
+            Toastify({
+                text: "{{ session()->get('error') }}",
+                duration: 3000,
+                style: {
+                    background: "#FCEDE9",
+                    color: "#7F8B8B"
+                },
+                close: true,
+                avatar: "https://cdn-icons-png.flaticon.com/512/564/564619.png"
+            }).showToast();
 
 
-});
-</script>
+        });
+    </script>
 @endif
 @yield('scripts')
 
