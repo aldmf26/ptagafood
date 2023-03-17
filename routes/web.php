@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
