@@ -16,14 +16,17 @@
 <script src="{{ asset('theme') }}/assets/js/bootstrap.js"></script>
 <script src="{{ asset('theme') }}/assets/js/app.js"></script>
 <script src="{{ asset('theme') }}/assets/extensions/jquery/jquery.min.js"></script>
-<script src="{{ asset('theme') }}/assets/js/pages/datatables.js"></script>
 <script src="{{ asset('theme') }}/assets/extensions/choices.js/public/assets/scripts/choices.js"></script>
+
+
+
 <script src="{{ asset('theme') }}/assets/js/pages/form-element-select.js"></script>
 <script src="{{ asset('theme') }}/assets/extensions/toastify-js/src/toastify.js"></script>
-<script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 {{-- <script src="{{ asset('theme') }}/assets/js/select2.min.js"></script> --}}
+<script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+<script src="{{ asset('theme') }}/assets/js/pages/datatables.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -33,15 +36,14 @@
     });
 
     $('#table').DataTable({
-        "paging": false,
+        "paging": true,
         "pageLength": 100,
-        "scrollY": "100%",
         "lengthChange": false,
-        // "ordering": false,
+        "ordering": true,
         "info": false,
         "stateSave": true,
         "autoWidth": true,
-        // "order": [ 5, 'DESC' ],
+        "order": [ 5, 'DESC' ],
         "searching": true,
     });
 
@@ -54,8 +56,8 @@
     });
 </script>
 @if (session()->has('sukses'))
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             Toastify({
                 text: "{{ session()->get('sukses') }}",
                 duration: 3000,
@@ -67,11 +69,11 @@
                 avatar: "https://cdn-icons-png.flaticon.com/512/190/190411.png"
             }).showToast();
         });
-    </script>
+</script>
 @endif
 @if (session()->has('error'))
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             Toastify({
                 text: "{{ session()->get('error') }}",
                 duration: 3000,
@@ -85,7 +87,7 @@
 
 
         });
-    </script>
+</script>
 @endif
 @yield('scripts')
 

@@ -1,7 +1,7 @@
 @props([
-    'title' => '',
-    'table' => 'Y',
-    'sizeCard' => '12',
+'title' => '',
+'table' => 'Y',
+'sizeCard' => '12',
 ])
 <x-theme.head :title="$title" />
 
@@ -10,7 +10,7 @@
 <div class="content-wrapper container">
     <div class="page-content">
         @if ($table == 'T')
-            {{ $slot }}
+        {{ $slot }}
         @else
         <div class="row">
             <div class="col-lg-{{$sizeCard}}">
@@ -20,7 +20,7 @@
                         {{ $cardHeader }}
                     </div>
                     <div class="card-body">
-    
+
                         {{ $cardBody }}
                     </div>
                 </div>

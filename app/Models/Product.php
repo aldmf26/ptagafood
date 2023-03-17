@@ -10,6 +10,10 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
     protected $fillable = [
-        'nm_product', 'id_kategori', 'jenis', 'is_active', 'id_lokasi'
+        'nm_product', 'sku', 'id_kategori', 'jenis', 'is_active', 'id_lokasi'
     ];
+    public function kategori()
+    {
+        return $this->belongsTo(kategori_product::class, 'id_kategori', 'id_kategori_products');
+    }
 }

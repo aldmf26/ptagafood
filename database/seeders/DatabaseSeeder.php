@@ -23,9 +23,11 @@ class DatabaseSeeder extends Seeder
                 'id_lokasi' => '1',
             ],
         );
-        
+
         \App\Models\Posisi::create(['nm_posisi' => 'Presiden',]);
         \App\Models\Posisi::create(['nm_posisi' => 'Admin',]);
 
+        $this->call(Products::class);
+        $this->call(Kategori_productSeeder::class);
     }
 }

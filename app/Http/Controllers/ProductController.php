@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\harga;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Product',
+            'product' => Product::with('kategori')->get(),
+        ];
+
+
+
+        return view("produk.index", $data);
     }
 
     public function store(Request $request)

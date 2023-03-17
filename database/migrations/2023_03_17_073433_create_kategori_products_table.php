@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHargasTable extends Migration
+class CreateKategoriProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateHargasTable extends Migration
      */
     public function up()
     {
-        Schema::create('harga', function (Blueprint $table) {
-            $table->bigIncrements('id_harga');
-            $table->integer('id_products');
-            $table->double('harga');
-            $table->integer('id_distribusi');
+        Schema::create('kategori_product', function (Blueprint $table) {
+            $table->bigIncrements('id_kategori_products');
+            $table->string('nm_kategori_product');
+            $table->integer('id_lokasi');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateHargasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('harga');
+        Schema::dropIfExists('kategori_products');
     }
 }

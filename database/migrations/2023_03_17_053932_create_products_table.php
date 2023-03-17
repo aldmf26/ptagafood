@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id_product');
             $table->string('nm_product');
+            $table->string('sku');
             $table->integer('id_kategori');
             $table->enum('jenis', ['food', 'drink']);
             $table->boolean('is_active');
