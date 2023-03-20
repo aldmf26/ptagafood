@@ -40,7 +40,8 @@ class ProductController extends Controller
             'id_station' => $request->id_station,
             'image' => $foto,
             'is_active' => '1',
-            'id_lokasi' => '1'
+            'id_lokasi' => '1',
+            'monitoring' => empty($request->monitor) ? 'T' : $request->monitor,
         ];
         $product = Product::create($data);
         $id_product = $product->id;
@@ -54,8 +55,8 @@ class ProductController extends Controller
             harga::create($data);
         }
 
-        for ($x = 0; $x < count($request->id_bahan); $x++) {
-            if (!empty($request->id_bahan[$x])) {
+        if (!empty($request->id_bahan)) {
+            for ($x = 0; $x < count($request->id_bahan); $x++) {
                 $data = [
                     'id_produk' => $id_product,
                     'id_bahan' => $request->id_bahan[$x],
@@ -66,9 +67,17 @@ class ProductController extends Controller
             }
         }
 
+        if (!empty($request->stk_awal)) {
+            $data = [
+                'id_produk' => $id_product,
+                'debit' => $request->stk_awal,
+                'kredit' => 0,
+                'tgl' => date('Y-m-d'),
 
-
-        return redirect()->route('produk');
+            ];
+            DB::table('stok_product')->insert($data);
+        }
+        return redirect()->route('produk')->with('sukses', 'Data berhasil di simpan');;
     }
 
     public function tambah_harga(Request $r)

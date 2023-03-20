@@ -17,7 +17,7 @@ class CreateStokProductTable extends Migration
             $table->bigIncrements('id_stok_produk');
             $table->integer('id_produk');
             $table->date('tgl');
-            $table->string('no_nota');
+            $table->string('no_nota')->nullable();
             $table->double('debit');
             $table->double('kredit');
             $table->enum('penyesuaian', ['T', 'Y']);

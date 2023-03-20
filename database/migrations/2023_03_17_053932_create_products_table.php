@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->integer('id_lokasi');
             $table->integer('id_station')->nullable();
+            $table->enum('monitoring', ['T', 'Y']);
             $table->timestamps();
         });
     }

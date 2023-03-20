@@ -120,9 +120,15 @@
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                                 aria-labelledby="pills-profile-tab">
                                 <div class="row">
+                                    <div class="col-lg-9 mb-2 pesan_resep">
+                                        <div class="alert alert-light-danger color-danger">
+                                            <i class="bi bi-exclamation-circle"></i> Resep hanya berlaku untuk produk
+                                            dengan <span class="fw-bold"> Monitoring persediaan OFF </span>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-4">
                                         <label for="">Bahan Baku</label>
-                                        <select name="id_bahan[]" id="" class="select2">
+                                        <select name="id_bahan[]" id="" class="select2 bhn_baku">
                                             <option value="">Pilih Bahan Baku</option>
                                             <option value="1">Wagyu A5</option>
                                             <option value="2">Bawang Merah</option>
@@ -131,11 +137,11 @@
                                     </div>
                                     <div class="col-lg-2">
                                         <label for="">Quantity</label>
-                                        <input name="qty_resep[]" type="text" class="form-control">
+                                        <input name="qty_resep[]" type="text" class="form-control bhn_baku">
                                     </div>
                                     <div class="col-lg-2">
                                         <label for="">Satuan Resep</label>
-                                        <select name="id_satuan_resep[]" id="" class="select2">
+                                        <select name="id_satuan_resep[]" id="" class="select2 bhn_baku">
                                             <option value="">Pilih Satuan</option>
                                             <option value="1">Pcs</option>
                                             <option value="2">Gr</option>
@@ -146,7 +152,7 @@
                                 <div id="tbh_resep"></div>
                                 <div class="row">
                                     <div class="col-12 mt-4">
-                                        <button class="btn btn-block btn-lg" id="btn_tbh_resep" type="button"
+                                        <button class="btn btn-block btn-lg bhn_baku" id="btn_tbh_resep" type="button"
                                             style="background-color: #F4F7F9; color: #8FA8BD; font-size: 14px; padding: 13px;"><i
                                                 class="fas fa-plus"></i> Tambah Bahan</button>
                                     </div>
@@ -161,8 +167,8 @@
                                             <td wdith="10%">Monitor Persediaan</td>
                                             <td align="left">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckDefault" />
+                                                    <input class="form-check-input monitor" name="monitor" value="Y"
+                                                        type="checkbox" id="flexSwitchCheckDefault" />
                                                 </div>
                                             </td>
                                         </table>
@@ -173,11 +179,11 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <label for="">Stok Awal</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="stk_awal" class="form-control">
                                     </div>
                                     <div class="col-lg-2">
                                         <label for="">Satuan</label>
-                                        <select name="" id="" class="select2">
+                                        <select name="satuan_stk" id="" class="select2">
                                             <option value="">Pilih Satuan</option>
                                             <option value="">Pcs</option>
                                             <option value="">Gr</option>
@@ -278,6 +284,27 @@
                         });
                     }
                 });
+            });
+
+            $('.pesan_resep').hide()
+            $(document).on('click', '.monitor', function() {
+                if($(this).prop("checked") == true){
+                    $('.bhn_baku').attr('disabled', 'true');
+                    $('.pesan_resep').show()
+                }
+                else if($(this).prop("checked") == false){
+                    $('.bhn_baku').removeAttr('disabled');
+                    $('.pesan_resep').hide()
+                }
+                
+            });
+            $(document).on('click', '.remove', function() {
+                var delete_row = $(this).attr('count');
+                $('#tbh_harga' + delete_row).remove();
+            });
+            $(document).on('click', '.remove_resep', function() {
+                var delete_row = $(this).attr('count');
+                $('#tbh_resep' + delete_row).remove();
             });
         });
     </script>
