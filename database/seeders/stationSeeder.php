@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\kategori_product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class Kategori_productSeeder extends Seeder
+class stationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,19 +16,23 @@ class Kategori_productSeeder extends Seeder
     {
         $data = [
             [
-                'nm_kategori_product' => 'Ramen',
+                'nm_station' => 'Food',
                 'id_lokasi' => '1',
             ],
             [
-                'nm_kategori_product' => 'Agemono & Yakimono',
+                'nm_station' => 'Drink',
                 'id_lokasi' => '1',
             ],
             [
-                'nm_kategori_product' => 'Bento',
+                'nm_station' => 'Sushi',
+                'id_lokasi' => '1',
+            ],
+            [
+                'nm_station' => 'Agemono',
                 'id_lokasi' => '1',
             ],
 
         ];
-        DB::table('kategori_product')->insert($data);
+        DB::table('station')->insert($data);
     }
 }

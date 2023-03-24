@@ -42,7 +42,12 @@ Route::middleware(['auth'])->group(function () {
         return view('administrator.dashboard.dashboard', ['title' => 'Administrator']);
     })->name('dashboard');
 
-    Route::get('/produk', [ProductController::class, 'index'])->name('produk');
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/produk', [ProductController::class, 'index'])->name('produk');
+        Route::post('/produk', [ProductController::class, 'store'])->name('produk');
+        Route::get('/tambah_harga', [ProductController::class, 'tambah_harga'])->name('tambah_harga');
+        Route::get('/tambah_resep', [ProductController::class, 'tambah_resep'])->name('tambah_resep');
+    });
 });
 
 Route::get('/', function () {
