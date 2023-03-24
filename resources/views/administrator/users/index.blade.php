@@ -5,7 +5,7 @@
 
     <x-slot name="cardBody">
         <section class="row">
-            <table class="table" id="table">
+            <table class="table" id="table1">
                 <thead>
                     <tr>
                         <th width="5">#</th>
@@ -73,7 +73,7 @@
         <form action="{{ route('users.update') }}" method="post">
             @csrf
             <x-theme.modal idModal="edit-modal" title="tambah user" btnSave="Y" size="modal-lg">
-                <div id="edit-modal-body"></div>
+                <div id="editBody"></div>
                 
             </x-theme.modal>
         </form>
@@ -89,7 +89,7 @@
                     type: "GET",
                     url: url,
                     success: function (response) {
-                        $('#edit-modal-body').html(response);
+                        $('#editBody').html(response);
                     }
                 });
   

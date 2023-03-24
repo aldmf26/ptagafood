@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatusisTable extends Migration
+class CreateTbKoki extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateStatusisTable extends Migration
      */
     public function up()
     {
-        Schema::create('statusis', function (Blueprint $table) {
-            $table->id();
-            $table->string('nm_posisi');
+        Schema::create('tb_koki', function (Blueprint $table) {
+            $table->integerIncrements('id_koki');
+            $table->integer('id_karyawan');
+            $table->date('tgl');
+            $table->string('status');
+            $table->integer('id_lokasi');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateStatusisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statusis');
+        Schema::dropIfExists('tb_koki');
     }
 }

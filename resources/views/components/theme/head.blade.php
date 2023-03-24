@@ -70,6 +70,8 @@
             }
         </style>
         @yield('styles')
+        <livewire:styles />
+        <livewire:scripts />
     </head>
     <body>
         <div id="app">

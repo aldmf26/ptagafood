@@ -12,6 +12,22 @@ class Karyawan extends Model
 
     public function gaji()
     {
-        return $this->belongsTo(Gaji::class, 'id_karyawan', 'id');
+        return $this->hasOne(Gaji::class, 'id_karyawan', 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'id_status', 'id');
+    }
+
+    public function posisi()
+    {
+        return $this->belongsTo(Posisi::class, 'id_posisi', 'id');
+    }
+
+    // untuk di controller add-koki livewire
+    public function absen()
+    {
+        return $this->hasMany(Absen::class, 'id_karyawan', 'id');
     }
 }

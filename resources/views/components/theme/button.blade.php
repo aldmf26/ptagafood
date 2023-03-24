@@ -7,9 +7,15 @@
 'href' => '#',
 'icon' => '',
 'modal' => 'T',
-'idModal' => ''
+'idModal' => '',
+'hapus' => 'T',
+'data' => ''
 ])
-<a href="{{$href}}" id="{{$id}}" @if ($modal=='Y' ) data-bs-toggle="modal" data-bs-target="#{{$idModal}}" @endif
+<a href="{{$href}}" 
+{{$data}}
+@if ($hapus == 'Y')
+    onclick="return confirm('Yakin ingin dihapus ?')"
+@endif id="{{$id}}" @if ($modal=='Y' ) data-bs-toggle="modal" data-bs-target="#{{$idModal}}" @endif
     class="{{$addClass}} btn btn-{{$size}} icon icon-left btn-{{$variant}}">
     <i class="fas {{$icon}}"></i> {{$teks}}
 </a>

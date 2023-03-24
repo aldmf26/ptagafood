@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\AddKokiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProductController;
@@ -7,6 +9,15 @@ use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
+    // absen
+    Route::controller(AbsenController::class)->group(function(){
+        Route::get('/absen', 'index')->name('absen');
+    });
+    // add koki
+    Route::controller(AddKokiController::class)->group(function(){
+        Route::get('/addKoki', 'index')->name('addKoki');
+    });
+
 
     // user
     Route::controller(UserController::class)->group(function () {
@@ -17,13 +28,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users/delete/{id}', 'delete')->name('users.delete');
     });
 
-    // user
+    // karyawan
     Route::controller(KaryawanController::class)->group(function () {
         Route::get('/karyawan', 'index')->name('karyawan');
         Route::post('/karyawan', 'create')->name('karyawan.create');
         Route::get('/karyawan/{id}', 'edit')->name('karyawan.edit');
         Route::post('/karyawan/update', 'update')->name('karyawan.update');
         Route::get('/karyawan/delete/{id}', 'delete')->name('karyawan.delete');
+        Route::get('/addPoint', 'point')->name('karyawan.point');
     });
 
     Route::get('/dashboard', function () {
